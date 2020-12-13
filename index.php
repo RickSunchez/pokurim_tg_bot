@@ -47,6 +47,7 @@
 					$message . "\n\nСледующий сеанс через " . $user_data["pause_time"] . "мин.\n" .
 					"Количество сеансов: " . count($user_data["stat"]));
 			}
+			$user_data["message_sent"] = false;
 		}
 	}
 
