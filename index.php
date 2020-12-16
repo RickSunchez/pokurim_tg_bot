@@ -1,5 +1,6 @@
 <?php
 	include "TG_API.php";
+	include "php/db_link.php";
 
 	$file = file_get_contents("secret.json");
 	$secret = json_decode($file, true);
@@ -8,15 +9,17 @@
 	$_data = file_get_contents("php://input");
 	$data = json_decode($_data, true);
 
-	$from = $data["message"]["from"]["id"];
+	$from    = $data["message"]["from"]["id"];
 	$chat_id = $data["message"]["chat"]["id"];
-	$text = $data["message"]["text"];
+	$text    = $data["message"]["text"];
 
 	$user_data = check_user($from, $chat_id);
+	// $user = new User($chat_id, $link);
 
 	if ($user_data["action"] == "on_start") {
 		$bot->sendMessage($chat_id, "Приветствую, если ты здесь, значит ты дошел до той точки, когда понял, что курение занимает слишком много места в твоей жизни. Я не обещаю, что ты бросишь курить, но давай попробуем нормализовать этот процесс. Итак, правила просты: покурил - нажми кнопку. Между перекурами есть перерыв, покурил внеочереди - нехороший человек, но осуждать тебя некому, кроме себя самого. Итак, прежде чем начать, давай настроим время между перекурами (в минутах):");
 		$user_data["action"] = "pause_set";
+		// $user->set_action("pause_set");
 	} elseif ($user_data["action"] == "pause_set") {
 		if ((int)$text == 0) {
 			$bot->sendMessage($chat_id, "Что-то пошло не так. Введите только цифры, без букв и пробелов");
