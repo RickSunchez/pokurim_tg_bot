@@ -34,9 +34,11 @@
 				? time()
 				: $evt;
 
-			$sql = "INSERT INTO `$table`(`_timestamp_`)
+			$sql = "INSERT INTO `$table`(`id`, `_timestamp_`, `delay`)
 					VALUES (
-						$time
+						NULL,
+						$time,
+						".$this->pause."
 					)";
 			mysqli_query($this->db_link, $sql);
 		}
@@ -95,7 +97,9 @@
 			mysqli_query($this->db_link, $sql);
 
 			$sql = "CREATE TABLE $table (
-				_timestamp_ INT
+				id bigint UNSIGNED NOT NULL,
+				_timestamp_ INT,
+				delay int NOT NULL
 			)";
 			mysqli_query($this->db_link, $sql);
 
