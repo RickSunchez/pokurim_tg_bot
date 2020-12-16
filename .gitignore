@@ -4,4 +4,6 @@ test.php
 .htaccess
 log
 web_hook_set.php
-php/*
+php/db_link.php
+php/working.php
+php/push_data.php
