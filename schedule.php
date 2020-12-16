@@ -38,4 +38,5 @@
 			mysqli_query($link, $sql);
 		}
 	}
+// /var/www/u1022297/data/www/shinesquad.ru/tg_bots/pokurim_tg_bot/
 ?>

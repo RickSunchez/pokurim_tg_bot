@@ -40,6 +40,7 @@
 						$time,
 						".$this->pause."
 					)";
+
 			mysqli_query($this->db_link, $sql);
 		}
 
@@ -97,7 +98,7 @@
 			mysqli_query($this->db_link, $sql);
 
 			$sql = "CREATE TABLE $table (
-				id bigint UNSIGNED NOT NULL,
+				id SERIAL,
 				_timestamp_ INT,
 				delay int NOT NULL
 			)";
