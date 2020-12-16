@@ -1,8 +1,8 @@
 <?php
-	include "TG_API.php";
-	include "php/db_link.php";
+	include "/var/www/u1022297/data/www/shinesquad.ru/tg_bots/pokurim_tg_bot/TG_API.php";
+	include "/var/www/u1022297/data/www/shinesquad.ru/tg_bots/pokurim_tg_bot/php/db_link.php";
 
-	$file = file_get_contents("secret.json");
+	$file = file_get_contents("/var/www/u1022297/data/www/shinesquad.ru/tg_bots/pokurim_tg_bot/secret.json");
 	$secret = json_decode($file, true);
 	$bot = new TelegramBot($secret["api_key"]);
 
@@ -13,7 +13,7 @@
 		if ($row["onMessage"]) continue;
 
 		$table = $row["stat_table"];
-		$pause = $row["pause_time"];
+		$pause = $row["pause_time"] * 60;
 		$chat  = $row["chat"];
 
 		$sql = "SELECT 
