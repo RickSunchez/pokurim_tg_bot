@@ -1,9 +1,9 @@
 <?php
-	include "TG_API.php";
+	include "/var/www/u1022297/data/www/shinesquad.ru/tg_bots/pokurim_tg_bot/TG_API.php";
 
-	$user_data_file = "user_data.json";
+	$user_data_file = "/var/www/u1022297/data/www/shinesquad.ru/tg_bots/pokurim_tg_bot/user_data.json";
 
-	$file = file_get_contents("secret.json");
+	$file = file_get_contents("/var/www/u1022297/data/www/shinesquad.ru/tg_bots/pokurim_tg_bot/secret.json");
 	$secret = json_decode($file, true);
 	$bot = new TelegramBot($secret["api_key"]);
 
