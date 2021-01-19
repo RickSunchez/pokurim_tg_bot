@@ -35,7 +35,7 @@
 			if (!$last_smoke) {
 				$user->add_event();
 				$bot->sendMessage($chat_id, 
-					"Это Ваш первый сеанс. Следующий через " . $user->pause . "мин.");
+					"Это Ваш первый сеанс. Следующий через " . $user->pause . "мин.", big_blue_button());
 			} else {
 				$diff = time() - $last_smoke;
 				$user->add_event();
@@ -46,9 +46,15 @@
 					$message = "Сорвался. Соберись! У тебя все получится!";
 				}
 
-				$bot->sendMessage($chat_id, 
-					$message . "\n\nСледующий сеанс через " . $user->pause . "мин.\n" .
-					"Количество сеансов: " . $user->get_count());
+				$bot->sendMessage(
+					$chat_id, 
+					$message . 
+						"\n\nСледующий сеанс через " . 
+						$user->pause . 
+						"мин.\n" .
+						"Количество сеансов: " . $user->get_count(),
+					big_blue_button()
+				);
 			}
 			$user->set_msg(0);
 		}
